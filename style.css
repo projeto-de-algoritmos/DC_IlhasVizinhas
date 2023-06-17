@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.controls {
+  margin-top: 20px;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* Default grid size */
+  grid-gap: 2px;
+  margin-top: 20px;
+}
+
+.square {
+  width: 40px;
+  height: 40px;
+  background-color: lightgray;
+}
+
+.square.highlight {
+  background-color: yellow;
+  background-image: url(https://creazilla-store.fra1.digitaloceanspaces.com/emojis/44370/desert-island-emoji-clipart-xl.png);
+  background-size: 150%;
+  background-position: center 35%;
+}
+
+.square.closest {
+  background-color: red;
+}
+
+.square.hover {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/b/ba/Red_x.svg");
+  background-size: cover;
+}
