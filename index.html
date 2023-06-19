@@ -1,24 +1,159 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
+
 <head>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caça ao Tesouro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="assets/favicon_pirate.ico">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
+
 <body>
-  <div class="container">
-    <div id="grid"></div>
-    <div class="controls">
-      <label for="rows">Rows:</label>
-      <input type="number" id="rows" min="1" value="10">
-      <label for="columns">Columns:</label>
-      <input type="number" id="columns" min="1" value="10">
-      <label for="highlight">Highlight Points:</label>
-      <input type="number" id="highlight" min="0" value="5">
-      <button id="randomize">Randomize</button>
-      <button id="divideAndConquer">Divide and Conquer</button>
-      <button id="clear">Clear</button>
+  <div class="title-div">
+    <div class="box title">
+      <h2 class="title-name">Caça ao <span>Tesouro</span></h2>
+    </div>
+
+    <div class="box title">
+      <h2 class="title-name2">Mochila do <span>Pirata</span></h2>
+    </div>
+
+    <div class="box title">
+      <h2 class="title-name3">Ilhas <span>Vizinhas</span></h2>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <button class="custom-btn btn-div" onclick="showFirstDiv()">Caça Tesouro</button>
+  <button class="custom-btn btn-div" onclick="showSecondDiv()">Mochila do Pirata</button>
+  <button class="custom-btn btn-div" onclick="showThirdDiv()">Ilhas Vizinhas</button>
+
+  <div class="box main" id="div1">
+    <label for="guide"><br>Ahoy, companheiro pirata!<br><br>Escolha um ponto de partida e destino clicando no grid
+      abaixo.<br><br>Nosso objetivo é encontrar o caminho até o aguardado tesouro.<br><br>Escolha entre
+      Dijkstra, DFS (Depth First Search) ou BFS (Breadth First Search).<br><br>Por Dijkstra você consegue navegar
+      pela diagonal, podendo ultrapassar<br>pelo meio de dois obstáculos caso haja caminho após eles!</label>
+
+    <div class="box controls">
+
+      <div class="item control1" id="obstacle-selector">
+        <label for="num-obstacles">Número de obstáculos:</label>
+        <input type="number" id="num-obstacles" min="0" max="100" value="0" oninput="limit_input_obstacle(this)"
+          style="width: 70px;">
+        <button class="custom-btn btn-search" onclick="update_obstacles()">Confirmar</button>
+        <button class="custom-btn btn-search" onclick="restart_obstacles()">Embaralhar Obstáculos</button>
+      </div>
+
+      <div class="item control2" id="xy-selector">
+        <div>
+          <label for="grid-size-x">Tamanho X:</label>
+          <input type="number" id="grid-size-x" min="1" max="20" value="10" oninput="limit_input_x(this)"
+            style="width: 53px;">
+        </div>
+        <div>
+          <label for="grid-size-y">Tamanho Y:</label>
+          <input type="number" id="grid-size-y" min="1" max="16" value="10" oninput="limit_input_y(this)"
+            style="width: 53px;">
+        </div>
+        <button class="custom-btn btn-search" onclick="change_grid_size()">Confirmar</button>
+      </div>
+
+      <div class="item control3" id="search-mode-selector">
+        <label for="search-mode">Modo de busca:</label>
+        <select id="search-mode" onchange="change_search_mode()">
+          <option value="dijkstra">Dijkstra</option>
+          <option value="dfs">DFS</option>
+          <option value="bfs">BFS</option>
+        </select>
+      </div>
+
+      <div class="item control4" id="steps">
+        <span class="label">Número de passos: </span>
+        <span id="step-count"></span>
+      </div>
+    </div>
+
+    <div class="box grid">
+      <div id="massive-grid"></div>
+    </div>
+  </div>
+
+  <div class="box2" id="div2">
+    <div class="container-mochila">
+      <h1 for="guide">1) No primeiro bloco, insira uma sequência de pesos e lucros alternados, separados por espaço (P V
+        P V ...). Esses serão os itens presentes no saque dos piratas.
+        <br>
+        <br>
+        2) No segundo bloco, coloque a capacidade do estoque pirata, ou seja, a quantidade máxima de peso que os piratas
+        podem levar.
+        <br>
+        <br>
+        3) Ao clicar no botão "Analisar", o algoritmo será executado e mostrará o melhor valor que os piratas podem
+        obter, levando em consideração a capacidade do estoque, peso e lucro dos itens.
+      </h1>
+      <div class="insert">
+        <input type="text" placeholder="'peso valor peso valor...'" id="items">
+        <input type="text" placeholder="Capacidade" value="50" id="capacity">
+        <button class="custom-btn btn-search" id="runButton">Analisar</button>
+      </div>
+      <div class="output">
+        <h2>Resultado</h2>
+        <div id="result">-</div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Valor</th>
+            <th>Peso</th>
+            <th>V/P</th>
+            <th>X</th>
+            <th>Resultado</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="box main" id="div3">
+    <label for="guide2">
+      <br><br><br>Ahoy, capitão!<br><br>Defina a quantidade de ilhas no mapa em (Número de ilhas)<br> ou
+      adicione/remova
+      ilhas ao clicar em quadrados do mapa.<br><br>Clique no botão 'Aleatorizar' para espalhar as Ilhas pelo
+      mapa.<br><br>Comande o botão 'Limpar' para desbravar novos mares.<br><br>Boa sorte na busca, valente
+      marinheiro!"
+    </label>
+
+    <div class="box controls">
+
+      <div class="item control1" id="obstacle-selector">
+        <label for="ilhas">Número de ilhas:</label>
+
+        <input type="number" id="ilhas" min="0" max="100" value="15" oninput="limit_input_ilhas(this)"
+          style="width: 70px;">
+
+        <button class="custom-btn2 btn-search" id="randomizar">Aleatorizar</button>
+      </div>
+
+      <div class="item control2" id="xy-selector">
+        <button class="custom-btn2 btn-search" id="dividirEConquistar">Dividir e Conquistar!</button>
+        <button class="custom-btn2 btn-search" id="limpar">Limpar</button>
+      </div>
+    </div>
+
+    <div class="box grid2-container">
+      <div id="grid2"></div>
+    </div>
+
+  </div>
+
+  <div class="box footer">
+    <p>Desenvolvido por José Luís (190057858) e Victor Cabral (190038900), 2023</p>
+  </div>
+
 </body>
+
 </html>
