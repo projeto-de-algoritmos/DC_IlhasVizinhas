@@ -65,7 +65,7 @@ Vídeo complementar contendo explicação da entrega feita para a unidade 1, 2 e
 Para começar a sua jornada, você terá controle sobre a quantidade de ilhas destacadas. Clicando no botão "Aleatorizar", as Ilhas serão espalhados pelo mapa, aumentando a emoção da busca. Em seguida, basta acionar o botão "Dividir e Conquistar" para encontrar as ilhas mais próximas umas das outras. Se desejar explorar novos mares, clique no botão "Limpar" e inicie uma nova busca em um mapa em branco.
 
 ## Outros 
-Este projeto foi criado como parte do curso de Projeto de Algoritmos da Fcauldade do Gama - Universidade de Brasília (FGA-UnB). Qualquer sugestão ou contribuição é bem-vinda.
+Este projeto foi criado como parte do curso de Projeto de Algoritmos da Faculdade do Gama - Universidade de Brasília (FGA-UnB). Qualquer sugestão ou contribuição é bem-vinda.
 
 
 
