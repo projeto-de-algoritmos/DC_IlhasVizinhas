@@ -15,27 +15,27 @@ As "Ilhas Vizinhas" é um projeto que utiliza o algoritmo de "Dividir e Conquist
 O objetivo principal é encontrar as ilhas mais próximas umas das outras, utilizando o algoritmo de "Dividir e Conquistar". O algoritmo divide o mapa em regiões menores, conquistando cada uma delas de forma eficiente e combinando os resultados para encontrar as ilhas vizinhas mais próximas.
 
 ## Screenshots
-<img src="assets/print1-entrega3.png" style="display: block; margin-left: auto; margin-right: auto;">
+<img src="assets/print1-entrega4.png" style="display: block; margin-left: auto; margin-right: auto;">
 
-<img src="assets/print2-entrega3.png" style="display: block; margin-left: auto; margin-right: auto;">
+<img src="assets/print2-entrega4.png" style="display: block; margin-left: auto; margin-right: auto;">
 
-<img src="assets/print3-entrega3.png" style="display: block; margin-left: auto; margin-right: auto;">
+<img src="assets/print3-entrega4.png" style="display: block; margin-left: auto; margin-right: auto;">
 
 ## Vídeo de Apresentação (Dividir e Conquistar)
 
 **Conteúdo:** Dividir e Conquistar.
 
-Vídeo contendo explicação das modificações feitas para a entrega da unidade 3. Foco em apresentar as novidades implementadas. 
+Vídeo contendo explicação das modificações feitas para a entrega da unidade 4. Foco em apresentar as novidades implementadas. 
 
-(Para melhor contexto do projeto em geral assistir o vídeo de apresentação complementar).
+(Para melhor contexto do projeto em geral assistir os vídeos de apresentação complementar).
 
 <a href="https://www.youtube.com/watch?v=wWZEXSx-Xvw" target="_blank">
-  <img src="assets/print2-entrega3.png" alt="Apresentação">
+  <img src="assets/print2-entrega4.png" alt="Apresentação">
 </a>
 
 ## Vídeo de Apresentação Complementar (Grafos 1, Grafos 2 e Knapsack)
 
-Vídeo complementar contendo explicação da entrega feita para a unidade 1, 2 e 3. 
+Vídeos complementares contendo explicação da entrega feita para a unidade 1, 2 e 3. 
 
 **Conteúdo:** Depth First Search (DFS) ou Breadth First Search (BFS)
 
