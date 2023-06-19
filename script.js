@@ -527,7 +527,7 @@ function criarGrid2() {
     for (let j = 0; j < 10; j++) {
       const square2 = document.createElement("div");
       square2.className = "square2";
-      square2.addEventListener("click", alternarIlhasilhas);
+      square2.addEventListener("click", alternarIlhas);
       square2.addEventListener("mouseover", ilhasSquare2);
       square2.addEventListener("mouseout", tirarIlhasSquare2);
       grid2.appendChild(square2);
@@ -568,8 +568,10 @@ function limparIlhas() {
   }
 }
 
-function alternarIlhasilhas() {
+function alternarIlhas() {
+  ship.play();
   this.classList.toggle("ilhas");
+  this.classList.remove("closest");
 }
 
 function dividirEConquistar() {
